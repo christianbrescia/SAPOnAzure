@@ -49,39 +49,39 @@ stages:
   # https://marketplace.visualstudio.com/items?itemName=charleszipp.azure-pipelines-tasks-terraform
   ######################################################################
 
-#  - stage: "validateTerraform"
-#    displayName: "Terraform - Validate"
-#    dependsOn:
-#      - "runCheckov"
-#    jobs:
-#      - job: "TerraformJobs"
-#        displayName: "Terraform > install, init and validate"
-#        continueOnError: false
-#        steps:
-#          - task: TerraformInstaller@0
-#            inputs:
-#              terraformVersion: "$(tf_version)"
-#            displayName: "Install > terraform"
-#
-#          - task: TerraformCLI@0
-#            inputs:
-#              command: "init"
-#              backendType: "azurerm"
-#              backendServiceArm: "$(SUBSCRIPTION_NAME)"
-#              ensureBackend: true
-#              backendAzureRmResourceGroupName: "$(tf_environment)-$(tf_state_rg)"
-#              backendAzureRmResourceGroupLocation: "$(tz_state_location)"
-#              backendAzureRmStorageAccountName: "$(tf_state_sa_name)"
-#              backendAzureRmStorageAccountSku: "$(tf_state_sku)"
-#              backendAzureRmContainerName: $(tf_state_container_name)
-#              backendAzureRmKey: "$(tf_environment).terraform.tstate"
-#            displayName: "Run > terraform init"
-#
-#          - task: TerraformCLI@0
-#            inputs:
-#              command: "validate"
-#              environmentServiceName: "$(SUBSCRIPTION_NAME)"
-#            displayName: "Run > terraform validate"
+  - stage: "validateTerraform"
+    displayName: "Terraform - Validate"
+    dependsOn:
+      - "runCheckov"
+    jobs:
+      - job: "TerraformJobs"
+        displayName: "Terraform > install, init and validate"
+        continueOnError: false
+        steps:
+          - task: TerraformInstaller@0
+            inputs:
+              terraformVersion: "$(tf_version)"
+            displayName: "Install > terraform"
+
+          - task: TerraformCLI@0
+            inputs:
+              command: "init"
+              backendType: "azurerm"
+              backendServiceArm: "$(SUBSCRIPTION_NAME)"
+              ensureBackend: true
+              backendAzureRmResourceGroupName: "$(tf_environment)-$(tf_state_rg)"
+              backendAzureRmResourceGroupLocation: "$(tz_state_location)"
+              backendAzureRmStorageAccountName: "$(tf_state_sa_name)"
+              backendAzureRmStorageAccountSku: "$(tf_state_sku)"
+              backendAzureRmContainerName: $(tf_state_container_name)
+              backendAzureRmKey: "$(tf_environment).terraform.tstate"
+            displayName: "Run > terraform init"
+
+          - task: TerraformCLI@0
+            inputs:
+              command: "validate"
+              environmentServiceName: "$(SUBSCRIPTION_NAME)"
+            displayName: "Run > terraform validate"
 
   # Plan Terraform - uses the following ...
   # https://marketplace.visualstudio.com/items?itemName=charleszipp.azure-pipelines-tasks-terraform
