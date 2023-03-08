@@ -67,7 +67,7 @@ stages:
             inputs:
               command: "init"
               backendType: "azurerm"
-              backendServiceArm: $
+              backendServiceArm: 'GOKU LTD (60f4e299-14a1-4f54-b8d6-11014cc6a7e0)'
               ensureBackend: true
               backendAzureRmResourceGroupName: "$(tf_environment)-$(tf_state_rg)"
               backendAzureRmResourceGroupLocation: "$(tz_state_location)"
