@@ -58,12 +58,12 @@ stages:
         displayName: "Terraform > install, init and validate"
         continueOnError: false
         steps:
-          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller.TerraformInstaller@0
+          - task: TerraformInstaller@0
             inputs:
               terraformVersion: "$(tf_version)"
             displayName: "Install > terraform"
 
-          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
+          - task: TerraformCLI@0
             inputs:
               command: "init"
               backendType: "azurerm"
@@ -77,7 +77,7 @@ stages:
               backendAzureRmKey: "$(tf_environment).terraform.tstate"
             displayName: "Run > terraform init"
 
-          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
+          - task: TerraformCLI@0
             inputs:
               command: "validate"
               environmentServiceName: "$(SUBSCRIPTION_NAME)"
@@ -98,12 +98,12 @@ stages:
       - job: "TerraformJobs"
         displayName: "Terraform > install, init & plan"
         steps:
-          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
+          - task: TerraformInstaller@0
             inputs:
               terraformVersion: "$(tf_version)"
             displayName: "Install > terraform"
 
-          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
+          - task: TerraformCLI@0
             inputs:
               command: "init"
               backendType: "azurerm"
@@ -117,7 +117,7 @@ stages:
               backendAzureRmKey: "$(tf_environment).terraform.tstate"
             displayName: "Run > terraform init"
 
-          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
+          - task: TerraformCLI@0
             inputs:
               command: "plan"
               environmentServiceName: "$(SUBSCRIPTION_NAME)"
@@ -126,7 +126,7 @@ stages:
             name: "plan"
             displayName: "Run > terraform plan"
 
-          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
+          - task: TerraformCLI@0
             inputs:
               command: "show"
               environmentServiceName: "$(SUBSCRIPTION_NAME)"
@@ -207,12 +207,12 @@ stages:
       - job: "TerraformAuto"
         displayName: "Terraform > install, init & apply"
         steps:
-          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller.TerraformInstaller@0
+          - task: TerraformInstaller@0
             inputs:
               terraformVersion: "$(tf_version)"
             displayName: "Install > terraform"
 
-          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
+          - task: TerraformCLI@0
             inputs:
               command: "init"
               backendType: "azurerm"
@@ -226,7 +226,7 @@ stages:
               backendAzureRmKey: "$(tf_environment).terraform.tstate"
             displayName: "Run > terraform init"
 
-          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
+          - task: TerraformCLI@0
             inputs:
               command: "apply"
               environmentServiceName: "$(SUBSCRIPTION_NAME)"
@@ -266,12 +266,12 @@ stages:
         displayName: "Terraform > install, init & apply"
         dependsOn: "waitForValidation"
         steps:
-          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller.TerraformInstaller@0
+          - task: TerraformInstaller@0
             inputs:
               terraformVersion: "$(tf_version)"
             displayName: "Install > terraform"
 
-          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
+          - task: TerraformCLI@0
             inputs:
               command: "init"
               backendType: "azurerm"
@@ -285,7 +285,7 @@ stages:
               backendAzureRmKey: "$(tf_environment).terraform.tstate"
             displayName: "Run > terraform init"
 
-          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
+          - task: TerraformCLI@0
             inputs:
               command: "apply"
               environmentServiceName: "$(SUBSCRIPTION_NAME)"
