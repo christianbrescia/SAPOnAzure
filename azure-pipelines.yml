@@ -58,7 +58,7 @@ stages:
         displayName: "Terraform > install, init and validate"
         continueOnError: false
         steps:
-          - task: TerraformInstaller@0
+          - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
             displayName: "Install terraform"
             inputs:
               terraformVersion: "$(tf_version)"
