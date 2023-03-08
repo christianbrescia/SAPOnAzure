@@ -80,7 +80,7 @@ stages:
           - task: TerraformCLI@0
             inputs:
               command: "validate"
-              environmentServiceName: "$(SUBSCRIPTION_NAME)"
+              environmentServiceName: "GOKU LTD (60f4e299-14a1-4f54-b8d6-11014cc6a7e0)"
             displayName: "Run > terraform validate"
 
   # Plan Terraform - uses the following ...
