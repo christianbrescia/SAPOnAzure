@@ -58,7 +58,7 @@ stages:
         displayName: "Terraform > install, init and validate"
         continueOnError: false
         steps:
-          - task: TerraformInstaller
+          - task: TerraformInstaller@0
             displayName: "Install terraform"
             inputs:
               terraformVersion: "$(tf_version)"
@@ -67,7 +67,7 @@ stages:
 #              terraformVersion: "$(tf_version)"
 #            displayName: "Install > terraform"
 
-          - task: TerraformCLI@0
+#          - task: TerraformCLI@0
             inputs:
               command: "init"
               backendType: "azurerm"
@@ -80,8 +80,8 @@ stages:
               backendAzureRmContainerName: $(tf_state_container_name)
               backendAzureRmKey: "$(tf_environment).terraform.tstate"
             displayName: "Run > terraform init"
-
-          - task: TerraformCLI@0
+#
+#          - task: TerraformCLI@0
             inputs:
               command: "validate"
               environmentServiceName: "$(SUBSCRIPTION_NAME)"
