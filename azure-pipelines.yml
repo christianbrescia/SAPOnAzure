@@ -67,7 +67,7 @@ stages:
             inputs:
               command: "init"
               backendType: "azurerm"
-              backendServiceArm: "$(SUBSCRIPTION_NAME)"
+              backendServiceArm: $
               ensureBackend: true
               backendAzureRmResourceGroupName: "$(tf_environment)-$(tf_state_rg)"
               backendAzureRmResourceGroupLocation: "$(tz_state_location)"
